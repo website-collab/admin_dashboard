@@ -1,0 +1,237 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+ 
+
+/* Background container */
+ .bg-container {
+  position: relative;
+  width: 100vw;      /* full viewport width */
+  height: 100vh;     /* full viewport height */
+  overflow: hidden;
+}
+
+/* Background images */
+.bg-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 5s ease-in-out;
+  transform: scale(1);
+}
+ 
+
+/* Login card */
+.login-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 450px;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255,255,255,0.9);
+  padding: 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+ .card-header .logo {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+ 
+.bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;       
+  height: 100%;     
+  background-size: cover;    
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 5s ease-in-out;
+  transform: scale(1);
+}
+
+
+.card-header p {
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+ .input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 15px;
+  background-color: #fff;
+}
+
+.input-group i {
+  margin-right: 10px;
+  color: #888;
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 14px;
+}
+
+ button {
+  width: 100%;
+  padding: 10px;
+  background-color: #1d4ed8;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #2563eb;
+}
+
+ .card-footer {
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.card-footer a {
+  color: #1d4ed8;
+  text-decoration: none;
+}
+
+.card-footer a:hover {
+  text-decoration: underline;
+}
+
+ .bg-image.show {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+
+/* icons login page  */
+
+ .icon-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    z-index: 99999;
+}
+
+.icon-container {
+    position: relative;
+    top: 39%;  
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  
+    gap: 20px;
+    z-index: 2;
+}
+
+.card-content .icon-container {
+    justify-content: center;
+    gap: 10px;
+}
+
+.icon {
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.card-content .circle {
+    width: 60px;
+    height: 60px;
+}
+
+.circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+}
+
+.fallback-icon {
+    display: none;
+    font-size: 36px;
+    color: #555;
+}
+
+.card-content .fallback-icon {
+    font-size: 24px;
+}
+
+.icon p {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.card-content .icon p {
+    font-size: 12px;
+}
+
+/* Hover effects */
+.icon:hover .circle {
+    transform: scale(1.1);
+    background-color: currentColor;
+}
+
+.icon:hover .fallback-icon {
+    color: white;
+}
+
+.icon:hover p {
+    color: currentColor;
+}
+
+/* Use data-color as CSS color */
+.icon {
+    color: black;
+}
+
+.icon[data-color="#FF6F61"] { color: #FF6F61; }
+.icon[data-color="#009CDB"] { color: #009CDB; }
+.icon[data-color="#F038C9"] { color: #F038C9; }
+.icon[data-color="#1FC7B6"] { color: #1FC7B6; }
+.icon[data-color="#FF8F32"] { color: #FF8F32; }
+.icon[data-color="#1E9BFF"] { color: #1E9BFF; }

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/admin_dashboad/style/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+  <body>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="container">
+      <!-- Sidebar -->
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="logo">
+            <i class="fas fa-chart-line"></i>
+            <span class="logo-text">AdminPanel</span>
+          </div>
+          <button class="close-btn" id="closeSidebar">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="sidebar-menu">
+          <div class="menu-item active">
+            <i class="fas fa-tachometer-alt"></i>
+            <span class="menu-text">Dashboard</span>
+          </div>
+          <div class="menu-item" id="usersMenu">
+            <i class="fas fa-user"></i>
+            <span class="menu-text">Users</span>
+            <i
+              class="fas fa-chevron-down menu-text"
+              style="margin-left: auto; font-size: 0.8rem"
+            ></i>
+          </div>
+          <div class="submenu" id="usersSubmenu">
+            <div class="submenu-item">- All Users</div>
+            <div class="submenu-item">- Add User</div>
+            <div class="submenu-item">- User Roles</div>
+          </div>
+          <div class="menu-item" id="productsMenu">
+            <i class="fas fa-box"></i>
+            <span class="menu-text">Products</span>
+            <i
+              class="fas fa-chevron-down menu-text"
+              style="margin-left: auto; font-size: 0.8rem"
+            ></i>
+          </div>
+          <div class="submenu" id="productsSubmenu">
+            <div class="submenu-item">- All Products</div>
+            <div class="submenu-item">- Add Product</div>
+            <div class="submenu-item">- Categories</div>
+          </div>
+          <div class="menu-item">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="menu-text">Orders</span>
+          </div>
+          <div class="menu-item">
+            <i class="fas fa-credit-card"></i>
+            <span class="menu-text">Payments</span>
+          </div>
+          <div class="menu-item">
+            <i class="fas fa-chart-bar"></i>
+            <span class="menu-text">Analytics</span>
+          </div>
+          <div class="menu-item">
+            <i class="fas fa-cog"></i>
+            <span class="menu-text">Settings</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+          <div class="header-left">
+            <button class="hamburger" id="hamburger">
+              <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+            <!-- <div class="logo">
+              <img src="/admin_dashboad/imges/WPI-Logo-New-1.png" alt="logo" />
+            </div> -->
+
+            <div class="logo">
+                <img class="light-logo" src="/admin_dashboad/imges/WPI-Logo-New-1.png" alt="Light Logo" />
+                <img class="dark-logo" src="/admin_dashboard/imges/WPI-Logo-New-dark.png" alt="Dark Logo" />
+            </div>
+          </div>
+
+          <div class="header-right">    
+            <button class="theme-toggle" id="themeToggle">
+              <i class="fas fa-moon"></i>
+            </button>
+            <button class="user-btn" data-popup="user-menu">
+              <div class="user-avatar"><i class="fas fa-user"></i></div>
+              <span> User </span>
+            </button>
+
+            <div class="popup" id="user-menu-popup">
+              <div class="popup-header">User Menu</div>
+              <div class="popup-item"><i>👤</i> Profile Settings</div>
+              <div class="popup-item"><i>🔒</i> Privacy & Security</div>
+              <div class="popup-item"><i>💳</i> Billing Information</div>
+              <div class="popup-item"><i>🌐</i> Language & Region</div>
+              <div class="popup-item"><i>🛡️</i> Security Settings</div>
+              <div class="popup-item"><i>💬</i> Contact Support</div>
+              <div class="popup-item"><i>🚪</i> Logout</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+          <div class="stats-container">
+            <div class="stat-card">
+              <div class="stat-title">Total Revenue</div>
+              <div class="stat-value">$24,580</div>
+              <div class="stat-change positive">
+                <i class="fas fa-arrow-up"></i> 12.5% from last month
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title">New Users</div>
+              <div class="stat-value">1,254</div>
+              <div class="stat-change positive">
+                <i class="fas fa-arrow-up"></i> 8.2% from last month
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title">Orders</div>
+              <div class="stat-value">542</div>
+              <div class="stat-change negative">
+                <i class="fas fa-arrow-down"></i> 3.4% from last month
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title">Conversion Rate</div>
+              <div class="stat-value">4.8%</div>
+              <div class="stat-change positive">
+                <i class="fas fa-arrow-up"></i> 1.2% from last month
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title">Conversion Rate</div>
+              <div class="stat-value">4.8%</div>
+              <div class="stat-change positive">
+                <i class="fas fa-arrow-up"></i> 1.2% from last month
+              </div>
+            </div>
+          </div>
+
+          <div class="charts-container">
+            <div class="chart-card">
+              <div class="chart-title">Sales Overview</div>
+              <div class="chart-placeholder">
+                <i
+                  class="fas fa-chart-line"
+                  style="font-size: 3rem; margin-right: 10px"
+                ></i>
+                Sales Chart Visualization
+              </div>
+            </div>
+            <div class="chart-card">
+              <div class="chart-title">Traffic Sources</div>
+              <div class="chart-placeholder">
+                <i
+                  class="fas fa-chart-pie"
+                  style="font-size: 3rem; margin-right: 10px"
+                ></i>
+                Traffic Sources Chart
+              </div>
+            </div>
+          </div>
+
+          <div class="charts-container">
+            <ul class="chart-card">
+              <div class="activity-title">Recent Activity</div>
+              <li class="activity-item">
+                <div class="activity-icon">
+                  <i class="fas fa-user-plus"></i>
+                </div>
+                <div class="activity-content">
+                  <div class="activity-text">New user registered</div>
+                  <div class="activity-time">2 minutes ago</div>
+                </div>
+              </li>
+              <li class="activity-item">
+                <div class="activity-icon">
+                  <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="activity-content">
+                  <div class="activity-text">Order #1234 completed</div>
+                  <div class="activity-time">15 minutes ago</div>
+                </div>
+              </li>
+              <li class="activity-item">
+                <div class="activity-icon">
+                  <i class="fas fa-box"></i>
+                </div>
+                <div class="activity-content">
+                  <div class="activity-text">
+                    Product "Wireless Headphones" added
+                  </div>
+                  <div class="activity-time">1 hour ago</div>
+                </div>
+              </li>
+              <li class="activity-item">
+                <div class="activity-icon">
+                  <i class="fas fa-sync-alt"></i>
+                </div>
+                <div class="activity-content">
+                  <div class="activity-text">System backup completed</div>
+                  <div class="activity-time">3 hours ago</div>
+                </div>
+              </li>
+            </ul>
+            <div class="chart-card">
+              <div class="activity-title">Recent Activity</div>
+              <ul class="activity-list">
+                <li class="activity-item">
+                  <div class="activity-icon">
+                    <i class="fas fa-user-plus"></i>
+                  </div>
+                  <div class="activity-content">
+                    <div class="activity-text">New user registered</div>
+                    <div class="activity-time">2 minutes ago</div>
+                  </div>
+                </li>
+                <li class="activity-item">
+                  <div class="activity-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                  </div>
+                  <div class="activity-content">
+                    <div class="activity-text">Order #1234 completed</div>
+                    <div class="activity-time">15 minutes ago</div>
+                  </div>
+                </li>
+                <li class="activity-item">
+                  <div class="activity-icon">
+                    <i class="fas fa-box"></i>
+                  </div>
+                  <div class="activity-content">
+                    <div class="activity-text">
+                      Product "Wireless Headphones" added
+                    </div>
+                    <div class="activity-time">1 hour ago</div>
+                  </div>
+                </li>
+                <li class="activity-item">
+                  <div class="activity-icon">
+                    <i class="fas fa-sync-alt"></i>
+                  </div>
+                  <div class="activity-content">
+                    <div class="activity-text">System backup completed</div>
+                    <div class="activity-time">3 hours ago</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/admin_dashboad/logic/main.js"></script>
+  </body>
+</html>
