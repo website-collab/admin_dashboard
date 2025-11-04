@@ -1,10 +1,8 @@
 const images = [
-  "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
-  "https://images.unsplash.com/photo-1519125323398-675f0ddb6308",
-  "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-  "https://images.unsplash.com/photo-1517433456452-f9633a875f6f",
-  "https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf"
-];
+    './imges/school1.jpg',
+    './imges/school2.jpg',
+    './imges/school3.jpg',
+   ];
 
 const container = document.querySelector('.bg-container');
 
