@@ -24,3 +24,4 @@ setInterval(() => {
   current = (current + 1) % bgDivs.length;
   bgDivs[current].classList.add('show');
 }, 5000);
+

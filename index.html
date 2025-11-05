@@ -1,275 +1,487 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="./style/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </head>
-
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management Dashboard</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+     
+</head>
+<body>
     <div class="overlay" id="overlay"></div>
 
     <div class="container">
-      <!-- Sidebar -->
-      <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-          <div class="logo">
-            <i class="fas fa-chart-line"></i>
-            <span class="logo-text">AdminPanel</span>
-          </div>
-          <button class="close-btn" id="closeSidebar">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-        <div class="sidebar-menu">
-          <div class="menu-item active">
-            <i class="fas fa-tachometer-alt"></i>
-            <span class="menu-text">Dashboard</span>
-          </div>
-          <div class="menu-item" id="usersMenu">
-            <i class="fas fa-user"></i>
-            <span class="menu-text">Users</span>
-            <i
-              class="fas fa-chevron-down menu-text"
-              style="margin-left: auto; font-size: 0.8rem"
-            ></i>
-          </div>
-          <div class="submenu" id="usersSubmenu">
-            <div class="submenu-item">- All Users</div>
-            <div class="submenu-item">- Add User</div>
-            <div class="submenu-item">- User Roles</div>
-          </div>
-          <div class="menu-item" id="productsMenu">
-            <i class="fas fa-box"></i>
-            <span class="menu-text">Products</span>
-            <i
-              class="fas fa-chevron-down menu-text"
-              style="margin-left: auto; font-size: 0.8rem"
-            ></i>
-          </div>
-          <div class="submenu" id="productsSubmenu">
-            <div class="submenu-item">- All Products</div>
-            <div class="submenu-item">- Add Product</div>
-            <div class="submenu-item">- Categories</div>
-          </div>
-          <div class="menu-item">
-            <i class="fas fa-shopping-cart"></i>
-            <span class="menu-text">Orders</span>
-          </div>
-          <div class="menu-item">
-            <i class="fas fa-credit-card"></i>
-            <span class="menu-text">Payments</span>
-          </div>
-          <div class="menu-item">
-            <i class="fas fa-chart-bar"></i>
-            <span class="menu-text">Analytics</span>
-          </div>
-          <div class="menu-item">
-            <i class="fas fa-cog"></i>
-            <span class="menu-text">Settings</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Main Content -->
-      <div class="main-content">
-        <!-- Header -->
-        <div class="header">
-          <div class="header-left">
-            <button class="hamburger" id="hamburger">
-              <i class="fa-solid fa-bars-staggered"></i>
-            </button>
-            <!-- <div class="logo">
-              <img src="/admin_dashboad/imges/WPI-Logo-New-1.png" alt="logo" />
-            </div> -->
-
-            <div class="logo">
-                <img class="light-logo" src="./imges/WPI-Logo-New-1.png" alt="Light Logo" />
-                <img class="dark-logo" src="./imges/WPI-Logo-New-dark.png" alt="Dark Logo" />
-            </div>
-          </div>
-
-          <div class="header-right">    
-            <button class="theme-toggle" id="themeToggle">
-              <i class="fas fa-moon"></i>
-            </button>
-            <button class="user-btn" data-popup="user-menu">
-              <div class="user-avatar"><i class="fas fa-user"></i></div>
-              <span> User </span>
-            </button>
-
-            <div class="popup" id="user-menu-popup">
-              <div class="popup-header">User Menu</div>
-              <div class="popup-item"><i>👤</i> Profile Settings</div>
-              <div class="popup-item"><i>🔒</i> Privacy & Security</div>
-              <div class="popup-item"><i>💳</i> Billing Information</div>
-              <div class="popup-item"><i>🌐</i> Language & Region</div>
-              <div class="popup-item"><i>🛡️</i> Security Settings</div>
-              <div class="popup-item"><i>💬</i> Contact Support</div>
-              <div class="popup-item"><i>🚪</i> Logout</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Content -->
-        <div class="content">
-          <div class="stats-container">
-            <div class="stat-card">
-              <div class="stat-title">Total Revenue</div>
-              <div class="stat-value">$24,580</div>
-              <div class="stat-change positive">
-                <i class="fas fa-arrow-up"></i> 12.5% from last month
-              </div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-title">New Users</div>
-              <div class="stat-value">1,254</div>
-              <div class="stat-change positive">
-                <i class="fas fa-arrow-up"></i> 8.2% from last month
-              </div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-title">Orders</div>
-              <div class="stat-value">542</div>
-              <div class="stat-change negative">
-                <i class="fas fa-arrow-down"></i> 3.4% from last month
-              </div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-title">Conversion Rate</div>
-              <div class="stat-value">4.8%</div>
-              <div class="stat-change positive">
-                <i class="fas fa-arrow-up"></i> 1.2% from last month
-              </div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-title">Conversion Rate</div>
-              <div class="stat-value">4.8%</div>
-              <div class="stat-change positive">
-                <i class="fas fa-arrow-up"></i> 1.2% from last month
-              </div>
-            </div>
-          </div>
-
-          <div class="charts-container">
-            <div class="chart-card">
-              <div class="chart-title">Sales Overview</div>
-              <div class="chart-placeholder">
-                <i
-                  class="fas fa-chart-line"
-                  style="font-size: 3rem; margin-right: 10px"
-                ></i>
-                Sales Chart Visualization
-              </div>
-            </div>
-            <div class="chart-card">
-              <div class="chart-title">Traffic Sources</div>
-              <div class="chart-placeholder">
-                <i
-                  class="fas fa-chart-pie"
-                  style="font-size: 3rem; margin-right: 10px"
-                ></i>
-                Traffic Sources Chart
-              </div>
-            </div>
-          </div>
-
-          <div class="charts-container">
-            <ul class="chart-card">
-              <div class="activity-title">Recent Activity</div>
-              <li class="activity-item">
-                <div class="activity-icon">
-                  <i class="fas fa-user-plus"></i>
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <i class="fas fa-school"></i>
+                     
                 </div>
-                <div class="activity-content">
-                  <div class="activity-text">New user registered</div>
-                  <div class="activity-time">2 minutes ago</div>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-item active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
                 </div>
-              </li>
-              <li class="activity-item">
-                <div class="activity-icon">
-                  <i class="fas fa-shopping-cart"></i>
+                <div class="menu-item" onclick="window.location.href='#'">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Students</span>
                 </div>
-                <div class="activity-content">
-                  <div class="activity-text">Order #1234 completed</div>
-                  <div class="activity-time">15 minutes ago</div>
+                <div class="menu-item" onclick="window.location.href='#'">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span>Teachers</span>
                 </div>
-              </li>
-              <li class="activity-item">
-                <div class="activity-icon">
-                  <i class="fas fa-box"></i>
+                <div class="menu-item" id="usersMenu">
+                    <i class="fas fa-users"></i>
+                    <span>Users</span>
+                    <i class="fas fa-chevron-down chevron"></i>
                 </div>
-                <div class="activity-content">
-                  <div class="activity-text">
-                    Product "Wireless Headphones" added
-                  </div>
-                  <div class="activity-time">1 hour ago</div>
+                <div class="submenu" id="usersSubmenu">
+                    <div class="submenu-item">All Users</div>
+                    <div class="submenu-item">Add User</div>
+                    <div class="submenu-item">User Roles</div>
                 </div>
-              </li>
-              <li class="activity-item">
-                <div class="activity-icon">
-                  <i class="fas fa-sync-alt"></i>
-                </div>
-                <div class="activity-content">
-                  <div class="activity-text">System backup completed</div>
-                  <div class="activity-time">3 hours ago</div>
-                </div>
-              </li>
-            </ul>
-            <div class="chart-card">
-              <div class="activity-title">Recent Activity</div>
-              <ul class="activity-list">
-                <li class="activity-item">
-                  <div class="activity-icon">
-                    <i class="fas fa-user-plus"></i>
-                  </div>
-                  <div class="activity-content">
-                    <div class="activity-text">New user registered</div>
-                    <div class="activity-time">2 minutes ago</div>
-                  </div>
-                </li>
-                <li class="activity-item">
-                  <div class="activity-icon">
-                    <i class="fas fa-shopping-cart"></i>
-                  </div>
-                  <div class="activity-content">
-                    <div class="activity-text">Order #1234 completed</div>
-                    <div class="activity-time">15 minutes ago</div>
-                  </div>
-                </li>
-                <li class="activity-item">
-                  <div class="activity-icon">
+                <div class="menu-item" id="productsMenu">
                     <i class="fas fa-box"></i>
-                  </div>
-                  <div class="activity-content">
-                    <div class="activity-text">
-                      Product "Wireless Headphones" added
-                    </div>
-                    <div class="activity-time">1 hour ago</div>
-                  </div>
-                </li>
-                <li class="activity-item">
-                  <div class="activity-icon">
-                    <i class="fas fa-sync-alt"></i>
-                  </div>
-                  <div class="activity-content">
-                    <div class="activity-text">System backup completed</div>
-                    <div class="activity-time">3 hours ago</div>
-                  </div>
-                </li>
-              </ul>
+                    <span>Resources</span>
+                    <i class="fas fa-chevron-down chevron"></i>
+                </div>
+                <div class="submenu" id="productsSubmenu">
+                    <div class="submenu-item">All Resources</div>
+                    <div class="submenu-item">Add Resource</div>
+                    <div class="submenu-item">Categories</div>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Schedule</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reports</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-left">
+                    <div class="logo">
+                        <img style="width: 130px;" src="./imges/cropped-New-Logo.png"  alt="">
+                    </div>
+                    <button class="hamburger" id="hamburger">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    
+                </div>
+
+                <div class="header-center">
+                    <input type="text" class="search-bar" placeholder="Search students, teachers, classes...">
+                </div>
+
+                <div class="header-right">
+                    <button class="header-icon" id="search-toggle">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="header-icon notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge"></span>
+                    </button>
+                    <div class="dark-mode-toggle" id="darkModeToggle"></div>
+                    <div class="user-profile" id="userProfile">
+                        <i class="fas fa-user"></i>
+                        <div class="user-popup" id="userPopup">
+                            <div class="popup-item">
+                                <i class="fas fa-user-circle"></i>
+                                Account
+                            </div>
+                            <div class="popup-item">
+                                <i class="fas fa-id-card"></i>
+                                Profile Details
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="content">
+                <h1 class="dashboard-title">School Dashboard</h1>
+                
+                <!-- Welcome Banner -->
+                <div class="welcome-banner">
+                    <div class="welcome-text">
+                        <h2>Welcome back, Dheeraj!</h2>
+                        <p>Here's what's happening at your school today.</p>
+                    </div>
+                    <div class="welcome-actions">
+                        <button class="welcome-btn">
+                            <i class="fas fa-calendar-plus"></i> Add Event
+                        </button>
+                        <button class="welcome-btn">
+                            <i class="fas fa-bullhorn"></i> Announcement
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats Overview -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-title">
+                            <i class="fas fa-user-graduate"></i>
+                            Total Students
+                        </div>
+                        <div class="stat-value">1,247</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            5.2% from last month
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            Active Teachers
+                        </div>
+                        <div class="stat-value">89</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            2.1% from last month
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">
+                            <i class="fas fa-book"></i>
+                            Total Classes
+                        </div>
+                        <div class="stat-value">156</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            8.5% from last month
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">
+                            <i class="fas fa-calendar-check"></i>
+                            Attendance Rate
+                        </div>
+                        <div class="stat-value">94.2%</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            1.3% from last month
+                        </div>
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-layout">
+                    <div class="left-column">
+                        <!-- Profile Section -->
+                        <div class="section">
+                            <div class="section-header">
+                                <h2 class="section-title">
+                                    <i class="fas fa-user-circle"></i>
+                                    Profile Overview
+                                </h2>
+                                <a href="#" class="view-all">View Details</a>
+                            </div>
+                            <div class="section-content">
+                                <div class="profile-card">
+                                    <div class="profile-avatar">
+                                        <i class="fas fa-user-graduate"></i>
+                                    </div>
+                                    <div class="profile-info">
+                                        <h3>Dheeraj</h3>
+                                        <p>School Administrator</p>
+                                        <div class="profile-stats">
+                                            <span><i class="fas fa-users"></i> 1,247 Students</span>
+                                            <span><i class="fas fa-chalkboard-teacher"></i> 89 Teachers</span>
+                                            <span><i class="fas fa-book"></i> 156 Classes</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Assignments Section -->
+                        <div class="section">
+                            <div class="section-header">
+                                <h2 class="section-title">
+                                    <i class="fas fa-tasks"></i>
+                                    Recent Assignments
+                                </h2>
+                                <a href="#" class="view-all">View All</a>
+                            </div>
+                            <div class="section-content">
+                                <div class="assignments-grid">
+                                    <div class="assignment-card">
+                                        <div class="assignment-icon">
+                                            <i class="fas fa-calculator"></i>
+                                        </div>
+                                        <div class="assignment-content">
+                                            <h4>Mathematics Quiz - Algebra</h4>
+                                            <p>
+                                                <i class="fas fa-users"></i> Class 10-A
+                                                <i class="fas fa-clock"></i> Due: Dec 15, 2024
+                                            </p>
+                                            <div class="assignment-status submitted">23/25 Submitted</div>
+                                            <div class="assignment-progress">
+                                                <div class="assignment-progress-bar submitted"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="assignment-card">
+                                        <div class="assignment-icon">
+                                            <i class="fas fa-flask"></i>
+                                        </div>
+                                        <div class="assignment-content">
+                                            <h4>Science Project Report</h4>
+                                            <p>
+                                                <i class="fas fa-users"></i> Class 9-B
+                                                <i class="fas fa-clock"></i> Due: Dec 18, 2024
+                                            </p>
+                                            <div class="assignment-status pending">18/25 Submitted</div>
+                                            <div class="assignment-progress">
+                                                <div class="assignment-progress-bar pending"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="assignment-card">
+                                        <div class="assignment-icon">
+                                            <i class="fas fa-book"></i>
+                                        </div>
+                                        <div class="assignment-content">
+                                            <h4>English Literature Essay</h4>
+                                            <p>
+                                                <i class="fas fa-users"></i> Class 11-A
+                                                <i class="fas fa-clock"></i> Due: Dec 20, 2024
+                                            </p>
+                                            <div class="assignment-status submitted">28/30 Submitted</div>
+                                            <div class="assignment-progress">
+                                                <div class="assignment-progress-bar submitted"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lessons Section -->
+                        <div class="section">
+                            <div class="section-header">
+                                <h2 class="section-title">
+                                    <i class="fas fa-calendar-day"></i>
+                                    Today's Lessons
+                                </h2>
+                                <a href="#" class="view-all">View Schedule</a>
+                            </div>
+                            <div class="section-content">
+                                <div class="lessons-grid">
+                                    <div class="lesson-card">
+                                        <div class="lesson-time">09:00 - 10:00</div>
+                                        <div class="lesson-content">
+                                            <h4>Mathematics</h4>
+                                            <p>Algebra & Geometry • Room 201</p>
+                                            <span class="lesson-teacher">Mr. Dheeraj</span>
+                                        </div>
+                                        <div class="lesson-status ongoing">Ongoing</div>
+                                    </div>
+                                    <div class="lesson-card">
+                                        <div class="lesson-time">10:15 - 11:15</div>
+                                        <div class="lesson-content">
+                                            <h4>Physics</h4>
+                                            <p>Mechanics • Room 305</p>
+                                            <span class="lesson-teacher">Ms. Davis</span>
+                                        </div>
+                                        <div class="lesson-status upcoming">Upcoming</div>
+                                    </div>
+                                    <div class="lesson-card">
+                                        <div class="lesson-time">11:30 - 12:30</div>
+                                        <div class="lesson-content">
+                                            <h4>Chemistry</h4>
+                                            <p>Organic Chemistry • Lab 1</p>
+                                            <span class="lesson-teacher">Dr. Wilson</span>
+                                        </div>
+                                        <div class="lesson-status upcoming">Upcoming</div>
+                                    </div>
+                                    <div class="lesson-card">
+                                        <div class="lesson-time">13:30 - 14:30</div>
+                                        <div class="lesson-content">
+                                            <h4>English Literature</h4>
+                                            <p>Shakespeare • Room 102</p>
+                                            <span class="lesson-teacher">Mrs. Brown</span>
+                                        </div>
+                                        <div class="lesson-status upcoming">Upcoming</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-column">
+                        <!-- Quick Actions -->
+                        <div class="section">
+                            <div class="section-header">
+                                <h2 class="section-title">
+                                    <i class="fas fa-bolt"></i>
+                                    Quick Actions
+                                </h2>
+                            </div>
+                            <div class="section-content">
+                                <div class="quick-actions">
+                                    <div class="action-card">
+                                        <div class="action-icon">
+                                            <i class="fas fa-user-plus"></i>
+                                        </div>
+                                        <h4>Add Student</h4>
+                                        <p>Register new student</p>
+                                    </div>
+                                    <div class="action-card">
+                                        <div class="action-icon">
+                                            <i class="fas fa-chalkboard-teacher"></i>
+                                        </div>
+                                        <h4>Add Teacher</h4>
+                                        <p>Register new teacher</p>
+                                    </div>
+                                    <div class="action-card">
+                                        <div class="action-icon">
+                                            <i class="fas fa-calendar-plus"></i>
+                                        </div>
+                                        <h4>Create Event</h4>
+                                        <p>Schedule new event</p>
+                                    </div>
+                                    <div class="action-card">
+                                        <div class="action-icon">
+                                            <i class="fas fa-file-alt"></i>
+                                        </div>
+                                        <h4>Generate Report</h4>
+                                        <p>Create school report</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Calendar Section -->
+                        <div class="section">
+                            <div class="section-header">
+                                <h2 class="section-title">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    Upcoming Events
+                                </h2>
+                                <a href="#" class="view-all">View Calendar</a>
+                            </div>
+                            <div class="section-content">
+                                <div class="calendar-events">
+                                    <div class="event-card">
+                                        <div class="event-date">
+                                            <span class="day">15</span>
+                                            <span class="month">Dec</span>
+                                        </div>
+                                        <div class="event-content">
+                                            <h4>Parent-Teacher Meeting</h4>
+                                            <p>Annual PTM for all grades • 2:00 PM - 5:00 PM</p>
+                                            <span class="event-location">School Auditorium</span>
+                                        </div>
+                                    </div>
+                                    <div class="event-card">
+                                        <div class="event-date">
+                                            <span class="day">20</span>
+                                            <span class="month">Dec</span>
+                                        </div>
+                                        <div class="event-content">
+                                            <h4>Winter Break Begins</h4>
+                                            <p>End of semester holidays • All day</p>
+                                            <span class="event-location">School Wide</span>
+                                        </div>
+                                    </div>
+                                    <div class="event-card">
+                                        <div class="event-date">
+                                            <span class="day">05</span>
+                                            <span class="month">Jan</span>
+                                        </div>
+                                        <div class="event-content">
+                                            <h4>New Semester Starts</h4>
+                                            <p>Spring semester begins • 8:00 AM</p>
+                                            <span class="event-location">All Classes</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Activity Feed -->
+                        <div class="section">
+                            <div class="section-header">
+                                <h2 class="section-title">
+                                    <i class="fas fa-rss"></i>
+                                    Recent Activity
+                                </h2>
+                                <a href="#" class="view-all">View All</a>
+                            </div>
+                            <div class="section-content">
+                                <div class="activity-feed">
+                                    <div class="activity-item">
+                                        <div class="activity-icon">
+                                            <i class="fas fa-user-plus"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <p>New student registered: Dheeraj</p>
+                                            <span class="activity-time">2 hours ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon">
+                                            <i class="fas fa-file-alt"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <p>Assignment submitted: Mathematics Quiz</p>
+                                            <span class="activity-time">4 hours ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon">
+                                            <i class="fas fa-chalkboard-teacher"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <p>New teacher account created: Mr. Anderson</p>
+                                            <span class="activity-time">Yesterday</span>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon">
+                                            <i class="fas fa-calendar-plus"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <p>Event scheduled: Science Fair 2024</p>
+                                            <span class="activity-time">2 days ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script src="./logic/main.js"></script>
-  </body>
+   <script src="./logic/main.js"></script>
+</body>
 </html>

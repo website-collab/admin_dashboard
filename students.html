@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>School Dashboard</title>
+    <link rel="stylesheet" href="./style/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="container">
+      <!-- Sidebar -->
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-logo">
+            <i class="fas fa-school"></i>
+          </div>
+        </div>
+        <div class="sidebar-menu">
+          <div class="menu-item active">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </div>
+          <div class="menu-item" onclick="window.location.href='#'">
+            <i class="fas fa-user-graduate"></i>
+            <span>Students</span>
+          </div>
+          <div class="menu-item" onclick="window.location.href='#'">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <span>Teachers</span>
+          </div>
+          <div class="menu-item" id="usersMenu">
+            <i class="fas fa-users"></i>
+            <span>Users</span>
+            <i class="fas fa-chevron-down chevron"></i>
+          </div>
+          <div class="submenu" id="usersSubmenu">
+            <div class="submenu-item">All Users</div>
+            <div class="submenu-item">Add User</div>
+            <div class="submenu-item">User Roles</div>
+          </div>
+          <div class="menu-item" id="productsMenu">
+            <i class="fas fa-box"></i>
+            <span>Resources</span>
+            <i class="fas fa-chevron-down chevron"></i>
+          </div>
+          <div class="submenu" id="productsSubmenu">
+            <div class="submenu-item">All Resources</div>
+            <div class="submenu-item">Add Resource</div>
+            <div class="submenu-item">Categories</div>
+          </div>
+          <div class="menu-item">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Schedule</span>
+          </div>
+          <div class="menu-item">
+            <i class="fas fa-chart-bar"></i>
+            <span>Reports</span>
+          </div>
+          <div class="menu-item">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+          <div class="header-left">
+            <div class="logo">
+              <img
+                style="width: 130px"
+                src="./imges/cropped-New-Logo.png"
+                alt=""
+              />
+            </div>
+            <button class="hamburger" id="hamburger">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+
+          <div class="header-center">
+            <input
+              type="text"
+              class="search-bar"
+              placeholder="Search students, teachers, classes..."
+            />
+          </div>
+
+          <div class="header-right">
+            <button class="header-icon" id="search-toggle">
+              <i class="fas fa-search"></i>
+            </button>
+            <button class="header-icon notification-btn">
+              <i class="fas fa-bell"></i>
+              <span class="notification-badge"></span>
+            </button>
+            <div class="dark-mode-toggle" id="darkModeToggle"></div>
+            <div class="user-profile" id="userProfile">
+              <i class="fas fa-user"></i>
+              <div class="user-popup" id="userPopup">
+                <div class="popup-item">
+                  <i class="fas fa-user-circle"></i>
+                  Account
+                </div>
+                <div class="popup-item">
+                  <i class="fas fa-id-card"></i>
+                  Profile Details
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+          <div class="students-header">
+            <h1 class="page-title">Students Management</h1>
+            <button class="add-student-btn">
+              <i class="fas fa-plus"></i> Add New Student
+            </button>
+          </div>
+
+          <!-- Stats -->
+          <div class="students-stats">
+            <div class="stat-card">
+              <div class="stat-number">1,247</div>
+              <div class="stat-label">Total Students</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">892</div>
+              <div class="stat-label">Active Students</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">94.2%</div>
+              <div class="stat-label">Avg Attendance</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">156</div>
+              <div class="stat-label">Classes</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Students Table -->
+        <div class="main">
+          <div class="table-container">
+            <div class="table-header">
+              <div class="table-title">Student Directory</div>
+              <div class="table-actions">
+                <button class="table-action-btn">
+                  <i class="fas fa-filter"></i> <span>Filter</span>
+                </button>
+                <button class="table-action-btn">
+                  <i class="fas fa-sort"></i> <span>Sort</span>
+                </button>
+                <button class="table-action-btn">
+                  <i class="fas fa-download"></i> <span>Export</span>
+                </button>
+              </div>
+            </div>
+            <table id="studentTable">
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>Class</th>
+                  <th>Section</th>
+                  <th>Roll No.</th>
+                  <th>Attendance</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="pagination">
+            <div class="pagination-info" id="paginationInfo"></div>
+            <div class="pagination-controls" id="pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const students = [
+        {
+          id: 1,
+          name: "Aarav Sharma",
+          class: "10",
+          section: "A",
+          roll: 101,
+          email: "aarav.sharma@school.com",
+          attendance: "95%",
+        },
+        {
+          id: 2,
+          name: "Bhavna Patel",
+          class: "9",
+          section: "B",
+          roll: 102,
+          email: "bhavna.patel@school.com",
+          attendance: "89%",
+        },
+        {
+          id: 3,
+          name: "Chirag Mehta",
+          class: "8",
+          section: "A",
+          roll: 103,
+          email: "chirag.mehta@school.com",
+          attendance: "93%",
+        },
+        {
+          id: 4,
+          name: "Deepak Reddy",
+          class: "11",
+          section: "C",
+          roll: 104,
+          email: "deepak.reddy@school.com",
+          attendance: "91%",
+        },
+        {
+          id: 5,
+          name: "Esha Nair",
+          class: "12",
+          section: "A",
+          roll: 105,
+          email: "esha.nair@school.com",
+          attendance: "96%",
+        },
+        {
+          id: 6,
+          name: "Farhan Khan",
+          class: "10",
+          section: "B",
+          roll: 106,
+          email: "farhan.khan@school.com",
+          attendance: "87%",
+        },
+        {
+          id: 7,
+          name: "Gauri Deshmukh",
+          class: "9",
+          section: "A",
+          roll: 107,
+          email: "gauri.deshmukh@school.com",
+          attendance: "92%",
+        },
+        {
+          id: 8,
+          name: "Harsh Verma",
+          class: "8",
+          section: "C",
+          roll: 108,
+          email: "harsh.verma@school.com",
+          attendance: "88%",
+        },
+        {
+          id: 9,
+          name: "Isha Banerjee",
+          class: "11",
+          section: "B",
+          roll: 109,
+          email: "isha.banerjee@school.com",
+          attendance: "90%",
+        },
+        {
+          id: 10,
+          name: "Jayant Iyer",
+          class: "12",
+          section: "A",
+          roll: 110,
+          email: "jayant.iyer@school.com",
+          attendance: "94%",
+        },
+        {
+          id: 11,
+          name: "Kiran Saini",
+          class: "10",
+          section: "A",
+          roll: 111,
+          email: "kiran.saini@school.com",
+          attendance: "89%",
+        },
+        {
+          id: 12,
+          name: "Laksh Gupta",
+          class: "9",
+          section: "C",
+          roll: 112,
+          email: "laksh.gupta@school.com",
+          attendance: "93%",
+        },
+        {
+          id: 13,
+          name: "Mitali Joshi",
+          class: "8",
+          section: "A",
+          roll: 113,
+          email: "mitali.joshi@school.com",
+          attendance: "95%",
+        },
+        {
+          id: 14,
+          name: "Nikhil Raj",
+          class: "11",
+          section: "C",
+          roll: 114,
+          email: "nikhil.raj@school.com",
+          attendance: "92%",
+        },
+        {
+          id: 15,
+          name: "Oviya Menon",
+          class: "12",
+          section: "A",
+          roll: 115,
+          email: "oviya.menon@school.com",
+          attendance: "97%",
+        },
+        {
+          id: 16,
+          name: "Pranav Das",
+          class: "10",
+          section: "B",
+          roll: 116,
+          email: "pranav.das@school.com",
+          attendance: "88%",
+        },
+        {
+          id: 17,
+          name: "Qasim Ahmed",
+          class: "9",
+          section: "A",
+          roll: 117,
+          email: "qasim.ahmed@school.com",
+          attendance: "91%",
+        },
+        {
+          id: 18,
+          name: "Riya Chatterjee",
+          class: "8",
+          section: "C",
+          roll: 118,
+          email: "riya.chatterjee@school.com",
+          attendance: "85%",
+        },
+        {
+          id: 19,
+          name: "Siddharth Pillai",
+          class: "11",
+          section: "B",
+          roll: 119,
+          email: "siddharth.pillai@school.com",
+          attendance: "90%",
+        },
+        {
+          id: 20,
+          name: "Tanvi Rao",
+          class: "12",
+          section: "A",
+          roll: 120,
+          email: "tanvi.rao@school.com",
+          attendance: "94%",
+        },
+        {
+          id: 21,
+          name: "Uday Mishra",
+          class: "10",
+          section: "A",
+          roll: 121,
+          email: "uday.mishra@school.com",
+          attendance: "88%",
+        },
+        {
+          id: 22,
+          name: "Vanya Kapoor",
+          class: "9",
+          section: "C",
+          roll: 122,
+          email: "vanya.kapoor@school.com",
+          attendance: "86%",
+        },
+        {
+          id: 23,
+          name: "Wasim Bhat",
+          class: "8",
+          section: "A",
+          roll: 123,
+          email: "wasim.bhat@school.com",
+          attendance: "95%",
+        },
+        {
+          id: 24,
+          name: "Xavier Fernandes",
+          class: "11",
+          section: "C",
+          roll: 124,
+          email: "xavier.fernandes@school.com",
+          attendance: "89%",
+        },
+        {
+          id: 25,
+          name: "Yamini Rathi",
+          class: "12",
+          section: "A",
+          roll: 125,
+          email: "yamini.rathi@school.com",
+          attendance: "91%",
+        },
+        {
+          id: 26,
+          name: "Zara Sheikh",
+          class: "10",
+          section: "B",
+          roll: 126,
+          email: "zara.sheikh@school.com",
+          attendance: "92%",
+        },
+        {
+          id: 27,
+          name: "Anaya Bansal",
+          class: "9",
+          section: "A",
+          roll: 127,
+          email: "anaya.bansal@school.com",
+          attendance: "93%",
+        },
+        {
+          id: 28,
+          name: "Bhuvan Kumar",
+          class: "8",
+          section: "C",
+          roll: 128,
+          email: "bhuvan.kumar@school.com",
+          attendance: "87%",
+        },
+        {
+          id: 29,
+          name: "Charvi Malhotra",
+          class: "11",
+          section: "B",
+          roll: 129,
+          email: "charvi.malhotra@school.com",
+          attendance: "90%",
+        },
+        {
+          id: 30,
+          name: "Dhruv Singh",
+          class: "12",
+          section: "A",
+          roll: 130,
+          email: "dhruv.singh@school.com",
+          attendance: "94%",
+        },
+        {
+          id: 31,
+          name: "Eshan Kaur",
+          class: "10",
+          section: "A",
+          roll: 131,
+          email: "eshan.kaur@school.com",
+          attendance: "96%",
+        },
+      ];
+
+      const rowsPerPage = 15;
+      let currentPage = 1;
+
+      function renderStudents() {
+        const tbody = document.querySelector("#studentTable tbody");
+        tbody.innerHTML = "";
+        const start = (currentPage - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+        const pageStudents = students.slice(start, end);
+
+        pageStudents.forEach((s) => {
+          const tr = document.createElement("tr");
+          const initials = s.name
+            .split(" ")
+            .map((n) => n[0])
+            .join("");
+
+          // Determine badge class based on attendance
+          let badgeClass = "medium";
+          const attendanceValue = parseInt(s.attendance);
+          if (attendanceValue >= 95) badgeClass = "high";
+          else if (attendanceValue < 85) badgeClass = "low";
+
+          tr.innerHTML = `
+            <td>
+              <div class="student-info">
+                <div class="student-avatar">${initials}</div>
+                <div>
+                  <div class="student-name">${s.name}</div>
+                  <div class="student-email">${s.email}</div>
+                </div>
+              </div>
+            </td>
+            <td>${s.class}</td>
+            <td>${s.section}</td>
+            <td>${s.roll}</td>
+            <td><span class="badge ${badgeClass}">${s.attendance}</span></td>
+            <td>
+              <div class="action-buttons">
+                <button class="action-btn edit" title="Edit">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="action-btn delete" title="Delete">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+        renderPagination();
+      }
+
+      function renderPagination() {
+        const pagination = document.getElementById("pagination");
+        const paginationInfo = document.getElementById("paginationInfo");
+        pagination.innerHTML = "";
+
+        const totalPages = Math.ceil(students.length / rowsPerPage);
+        const start = (currentPage - 1) * rowsPerPage + 1;
+        const end = Math.min(currentPage * rowsPerPage, students.length);
+
+        paginationInfo.textContent = `Showing ${start} to ${end} of ${students.length} students`;
+
+        // Previous button
+        const prevBtn = document.createElement("button");
+        prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        prevBtn.classList.add("pagination-btn");
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.addEventListener("click", () => {
+          if (currentPage > 1) {
+            currentPage--;
+            renderStudents();
+          }
+        });
+        pagination.appendChild(prevBtn);
+
+        // Page numbers
+        for (let i = 1; i <= totalPages; i++) {
+          const btn = document.createElement("button");
+          btn.textContent = i;
+          btn.classList.add("pagination-btn");
+          if (i === currentPage) btn.classList.add("active");
+          btn.addEventListener("click", () => {
+            currentPage = i;
+            renderStudents();
+          });
+          pagination.appendChild(btn);
+        }
+
+        // Next button
+        const nextBtn = document.createElement("button");
+        nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        nextBtn.classList.add("pagination-btn");
+        nextBtn.disabled = currentPage === totalPages;
+        nextBtn.addEventListener("click", () => {
+          if (currentPage < totalPages) {
+            currentPage++;
+            renderStudents();
+          }
+        });
+        pagination.appendChild(nextBtn);
+      }
+
+      renderStudents();
+    </script>
+    <script src="./logic/main.js"></script>
+  </body>
+</html>
