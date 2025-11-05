@@ -391,6 +391,7 @@ body {
   font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 8px;
+  text-align: left;
 }
 
 .stat-change {
@@ -595,13 +596,7 @@ body {
   align-items: center;
   gap: 8px;
 }
-
-.stat-value {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: var(--primary-color);
-}
+ 
 
 .stat-change {
   font-size: 0.85rem;
