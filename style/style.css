@@ -1176,7 +1176,7 @@ body {
   margin-bottom: 30px;
 }
 
-.stat-card {
+.stat-cards {
   background-color: var(--card-bg);
   padding: 20px;
   border-radius: var(--border-radius);
@@ -1187,7 +1187,7 @@ body {
   overflow: hidden;
 }
 
-.stat-card::before {
+.stat-cards::before {
   content: "";
   position: absolute;
   top: 0;
@@ -1197,7 +1197,7 @@ body {
   background-color: var(--primary-color);
 }
 
-.stat-card:hover {
+.stat-cards:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
 }
@@ -1205,7 +1205,7 @@ body {
 .stat-number {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--primary-color);
+  color: var(--text-color);
   margin-bottom: 5px;
 }
 
