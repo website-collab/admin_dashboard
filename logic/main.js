@@ -108,10 +108,8 @@ window.addEventListener("load", () => {
   }
 });
 
-
-
 // profile page 
- const profileInput = document.getElementById("profilePicInput");
+const profileInput = document.getElementById("profilePicInput");
 const profilePreview = document.getElementById("profilePreview");
 const uploadPlaceholder = document.getElementById("uploadPlaceholder");
 const registrationForm = document.getElementById("registrationForm");
@@ -186,11 +184,11 @@ registrationForm.addEventListener("submit", (e) => {
   if (!valid) return;
 
   document.getElementById("previewName").textContent =
-    document.getElementById("firstName").value + " " + document.getElementById("lastName").value;
+  document.getElementById("firstName").value + " " + document.getElementById("lastName").value;
   document.getElementById("previewEmail").textContent = document.getElementById("email").value;
   document.getElementById("previewPhone").textContent = document.getElementById("phone").value;
   document.getElementById("previewLocation").textContent =
-    document.getElementById("city").value + ", " + document.getElementById("country").value;
+  document.getElementById("city").value + ", " + document.getElementById("country").value;
 
   successMessage.classList.add("show");
   setTimeout(() => successMessage.classList.remove("show"), 3000);

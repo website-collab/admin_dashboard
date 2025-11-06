@@ -1675,6 +1675,7 @@ h1 {
 .form-group label {
   font-weight: 600;
   margin-bottom: 5px;
+  color: black;
 }
 
 .form-input {
