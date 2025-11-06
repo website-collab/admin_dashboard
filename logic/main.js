@@ -123,7 +123,7 @@ const userProfileIcon = userProfile.querySelector('i');
 // Function to set default profile image
 function setDefaultProfile() {
   const defaultImg = 'https://cdn.imgbin.com/16/5/19/imgbin-student-computer-icons-school-illustration-student-bgqc2WnxQHbatSjQmXgGT3yia.jpg';
-  const defaultHeaderImg = 'https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=1024x1024&w=0&k=20&c=z8_rWaI8x4zApNEEG9DnWlGXyDIXe-OmsAyQ5fGPVV8=';
+  const defaultHeaderImg = 'https://cdn.imgbin.com/16/5/19/imgbin-student-computer-icons-school-illustration-student-bgqc2WnxQHbatSjQmXgGT3yia.jpg';
   profilePreview.src = defaultImg;
   profilePreview.style.display = 'block';
   uploadPlaceholder.style.display = 'none';
