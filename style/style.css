@@ -273,12 +273,14 @@ body {
   height: 32px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.2);
-  display: flex;
-  align-items: center;
+   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: var(--transition);
   position: relative;
+  object-fit: contain;
+  border: 1px solid black;
+  display: flex;
 }
 
 .user-profile:hover {
@@ -453,6 +455,31 @@ body {
     font-size: 1.2rem;
   }
 }
+
+@media (max-width: 320px) {
+  .header {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;  
+    padding: 12px 0px;
+    box-sizing: border-box;  
+  }
+
+  .header .logo img {
+    max-width: 100px;  
+   }
+
+  .header .menu-icon,
+  .header .search-icon,
+  .header .notification-icon {
+    font-size: 18px;  
+  }
+
+  .header nav {
+    flex-wrap: wrap;  
+  }
+}
+
 
 /* Overlay for mobile */
 .overlay {
@@ -1517,13 +1544,9 @@ tr:hover {
 }
 
 @media (max-width: 480px) {
-  .header {
-    padding: 12px 0px;
-  }
+   
 
-  .header-right {
-    gap: 10px;
-  }
+  
 
   .logo {
     font-size: 1.2rem;
@@ -1537,23 +1560,7 @@ tr:hover {
     display: none;
   }
 }
-
-/* Overlay for mobile */
-.overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-}
-
-.overlay.active {
-  display: block;
-}
-
+ 
 h1 {
   font-size: 1.8rem;
   font-weight: 700;
@@ -1562,7 +1569,7 @@ h1 {
  /* profile page style */
 
 .registration-container {
-  display: flex;
+  display: grid;
   gap: 40px;
   background: #f8f9fa;
   padding: 30px;
@@ -1577,6 +1584,8 @@ h1 {
   padding: 25px;
   border-radius: 12px;
   text-align: center;
+  width: 800px;
+  margin: 0 auto;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
 }
 
@@ -1585,6 +1594,7 @@ h1 {
   width: 140px;
   height: 140px;
   margin: 0 auto 15px;
+  cursor: pointer;
 }
 
 .upload-placeholder {
@@ -1592,7 +1602,7 @@ h1 {
   height: 140px;
   border-radius: 50%;
   border: 2px dashed #bbb;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -1616,7 +1626,8 @@ h1 {
   height: 140px;
   border-radius: 50%;
   object-fit: cover;
-  display: none;
+  border: 1px solid black;
+  display: block;
 }
 
 .profile-info {

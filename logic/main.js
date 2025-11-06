@@ -103,6 +103,7 @@ window.addEventListener("resize", () => {
 
 // Initialize on load
 window.addEventListener("load", () => {
+  setDefaultProfile();
   if (isMobile()) {
     headerCenter.style.display = "none";
   }
@@ -117,9 +118,25 @@ const successMessage = document.getElementById("successMessage");
 const passwordInput = document.getElementById("password");
 const confirmPasswordInput = document.getElementById("confirmPassword");
 const passwordStrength = document.getElementById("passwordStrength");
+const userProfileIcon = userProfile.querySelector('i');
+
+// Function to set default profile image
+function setDefaultProfile() {
+  const defaultImg = 'https://cdn.imgbin.com/16/5/19/imgbin-student-computer-icons-school-illustration-student-bgqc2WnxQHbatSjQmXgGT3yia.jpg';
+  const defaultHeaderImg = 'https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=1024x1024&w=0&k=20&c=z8_rWaI8x4zApNEEG9DnWlGXyDIXe-OmsAyQ5fGPVV8=';
+  profilePreview.src = defaultImg;
+  profilePreview.style.display = 'block';
+  uploadPlaceholder.style.display = 'none';
+  userProfile.style.backgroundImage = `url(${defaultHeaderImg})`;
+  userProfile.style.backgroundSize = 'cover';
+  userProfile.style.backgroundPosition = 'center';
+  userProfile.style.backgroundRepeat = 'no-repeat';
+  userProfileIcon.style.display = 'none';
+}
 
 // Profile Preview
-uploadPlaceholder.addEventListener("click", () => profileInput.click());
+const profilePreviewBox = document.querySelector('.profile-preview-box');
+profilePreviewBox.addEventListener("click", () => profileInput.click());
 profileInput.addEventListener("change", () => {
   const file = profileInput.files[0];
   if (file) {
@@ -128,6 +145,11 @@ profileInput.addEventListener("change", () => {
       profilePreview.src = reader.result;
       profilePreview.style.display = "block";
       uploadPlaceholder.style.display = "none";
+      userProfile.style.backgroundImage = `url(${reader.result})`;
+      userProfile.style.backgroundSize = 'cover';
+      userProfile.style.backgroundPosition = 'center';
+      userProfile.style.backgroundRepeat = 'no-repeat';
+      userProfileIcon.style.display = 'none';
     };
     reader.readAsDataURL(file);
   }
@@ -195,8 +217,7 @@ registrationForm.addEventListener("submit", (e) => {
 
   registrationForm.reset();
   passwordStrength.className = "password-strength";
-  profilePreview.style.display = "none";
-  uploadPlaceholder.style.display = "flex";
+  setDefaultProfile();
 });
 
 // Reset Button
@@ -205,7 +226,6 @@ document.getElementById("resetBtn").addEventListener("click", () => {
   document.querySelectorAll(".error-message").forEach((e) => e.classList.remove("show"));
   document.querySelectorAll(".form-input").forEach((i) => i.classList.remove("error"));
   passwordStrength.className = "password-strength";
-  profilePreview.style.display = "none";
-  uploadPlaceholder.style.display = "flex";
+  setDefaultProfile();
 });
  
